@@ -1,0 +1,181 @@
+
+{% load static %}
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title> MOVIE BLOG</title>
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/style-starter.css' %}">
+  <!-- Template CSS -->
+  <link href="//fonts.googleapis.com/css?family=Playfair+Display:400,400i,700&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Montserrat:300,300i,400,600,700,800&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Template CSS -->
+{% if msg != "" %}
+<script>alert('{{msg}}');</script>
+{% endif %}
+
+</head>
+
+<body>
+<!-- Headers-4 block -->
+<section class="w3l-header-6-main mobile-header">
+    <div class="header-section-hny">
+        <div class="header-top">
+            <div class="container">
+                <!-- /header-top-inn-->
+                <div class="header-inn-top row">
+                    <div class="logo-brand col-6">
+                        <a class="navbar-brand text-white" href="{% url 'index' %}">
+                       <b style="font-size: xx-large;font-family: monospace , sans-serif;">  Movie<span style="color:rgb(233, 164, 53)">B</span>log</b> 
+                    
+                    </a>
+                    </div>
+                    <div class="menu-overlay-left col-6 ml-auto">
+                        <div class="two-pops d-flex">
+                        </div>
+                        <!-- overlay-menuv-menu -->
+                    </div>
+                </div>
+                <!-- //header-top-inn-->
+            </div>
+        </div>
+        <header class="header-hny-block">
+            <div class="container">
+                 <!-- /.nav-collapse -->
+                 <nav class="navbar navbar-expand-lg navbar-light">
+                      
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav mr-lg-auto">
+                           
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="{% url 'index' %}" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                       Home</a>
+                                 
+								</li>
+							
+
+                               {% if role == "user" %}
+                               <li class="nav-item">
+                                <a class="nav-link" href="{% url 'Privacy' %}">Privacy</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'booked_history' %}">Booking History</a>
+                                </li>
+    
+                               <li class="nav-item">
+                                <a class="nav-link" href="{% url 'Logout' %}">Logout</a>
+                            </li>
+                               {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+                                </li>
+                                <li class="nav-item">
+									<a class="nav-link" href="{% url 'login' %}">Login</a>
+							   </li>
+{% endif %}
+                            </ul>
+                            <div class="social-right">
+                                    <ul class="social-icons-top">
+                                       <!-- <li><a class="facebook" href="#"><span class="fa fa-facebook"
+                                                    aria-hidden="true"></span></a>
+                                        </li>
+                                        <li><a class="twitter" href="#"><span class="fa fa-twitter"
+                                                    aria-hidden="true"></span></a></li>
+                                        <li><a class="google" href="#"><span class="fa fa-google-plus"
+                                                    aria-hidden="true"></span></a>
+                                        </li>
+                                        <li><a class="instagram" href="#"><span class="fa fa-instagram"
+                                                    aria-hidden="true"></span></a>
+                                        </li>-->
+                                    </ul>
+                                </div>
+                        </div>
+                    </nav>
+
+                <!-- /.nav-collapse -->
+        </header>
+    </div>
+</section>
+<!--w3l-banner-slider-main-->
+
+
+
+
+
+{% block content%}
+{% endblock %}
+
+
+
+
+
+
+
+
+<!-- footer-66 -->
+<footer class="w3l-footer-66">
+    <section class="footer-inner-main py-md-5 py-5">
+        <div class="container">
+          
+        </div>
+    </section>
+    <div class="below-section">
+        <div class="container">
+            <div class="copyright-footer text-center">
+
+                <p>© 2020 Webzine. All rights reserved.| Design by
+					<a href="http://w3layouts.com/" target="_blank">W3layouts</a>
+                </p>
+            </div>
+        </div>
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            <span class="fa fa-arrow-up" aria-hidden="true"></span>
+        </button>
+        <script>
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function () {
+                scrollFunction()
+            };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("movetop").style.display = "block";
+                } else {
+                    document.getElementById("movetop").style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+        <!-- /move top -->
+    </div>
+    <!-- copyright -->
+
+
+
+</footer>
+<!--//footer-66 -->
+</body>
+
+</html>

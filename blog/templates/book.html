@@ -1,0 +1,22 @@
+
+<form action="{% url 'book' %}" method="post">
+    {% csrf_token %}
+    <label for="">Date:-{{data.date}}</label>&nbsp&nbsp
+    <label for="">Time:-{{data.showtime}}</label>
+    <div class="form-group">
+        <input type="hidden" name="t1" value="{{data.showid}}">
+    <label for="rate">Rate</label>
+    <input class="form-control"  type="text" name="t2" id="rate" value="{{data.rate}}" readonly>
+    </div>
+    <div class="form-group">
+    <label for="seat">Available Seats</label>
+    <input class="form-control"  type="text" name="t3" id="seat" value="{{data.seats}}" readonly>
+    </div>
+    <div class="form-group">
+    <label for="persons">No of seats</label>
+    <input class="form-control"  type="number" name="t4" id="person" min="1" max="10" required>
+    </div>
+    <div class="form-group">
+        <input type="submit" onclick="checkseat()"  class="btn btn-primary"  value="Proceed to payment">    
+    </div>
+</form>

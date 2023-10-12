@@ -1,0 +1,88 @@
+{% extends "adminhead.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!--grid-->
+<div class="row">
+<div class="col-md-12 bg-info">
+ <h3 class="text-primary">Manage Movie Personals</h3>
+ <div class="col-md-1"></div>
+   <div class="col-md-10 ">
+    <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{% url 'personals' %}">
+        {% csrf_token %}
+  
+            <div class="tab-pane active" id="horizontal-form" style="margin-bottom: 5px;">
+                   
+                    <div class="form-group ">
+                        <label for="focusedinput" class="col-sm-2 ">Name</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="t1" required id="focusedinput" placeholder="Menu Type">
+                        </div>
+                       
+                    </div>
+              	
+                    <div class="form-group ">
+                        <label for="focusedinput" class="col-sm-2 ">Photo</label>
+                        <div class="col-sm-8">
+                            <input type="file" class="form-control" name="t2" required id="focusedinput" placeholder="Menu Type">
+                        </div>
+                       
+                    </div>
+            
+             
+            </div>
+       
+        
+    
+
+<div class="" style="margin-bottom: 10px;">
+<div class="row">
+
+<div class="col-sm-8 col-sm-offset-2 " align="center">
+    <button class="btn-success btn" type="submit" name="submit">Add</button>
+    <input type="reset" value="Reset" class=" btn btn-warning"/>
+    
+</div>
+</div>
+</div>
+</form>
+
+<hr/>
+<table id="table table-responsive table-striped " width="100%" style="margin-bottom:10px;">
+    <thead class="bg-primary text-white"> <tr>
+        <th style="  color:white;">Sl. No.</th>
+        <th style="  color:white;">photo</th>
+        <th style="  color:white;">Name</th>
+        <th style="  color:white;">Action</th>
+    </tr>
+</thead>
+<tbody>
+{% for datas in data %}
+                                
+<tr>
+<td>{{ forloop.counter }}</td>
+
+<td><img src='media/{{datas.person_photo}}' width="50px" height="50px" style="border-radius: 25px;"</td>
+<td>{{datas.person_name}}</td>
+<td><a class="btn-danger btn" href="{% url 'delete_person' %}?id={{datas.person_id}}">Remove</a></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+
+
+<style>
+table th, table td {
+padding: 9px 7px;
+text-align: left;
+}
+</style>
+
+{% endblock %}

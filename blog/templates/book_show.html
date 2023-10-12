@@ -1,0 +1,43 @@
+
+<div>
+    {% if datac == 0 %}
+    <br>
+    <span style="color:red">Ticket not available</span>
+    {% else %}
+    <div>
+        <table>
+        {% for datat in datat %} 
+            <tr>
+            {% for data in data %}                                    
+                {% if datat.theatreid == data.theatre_id%}               
+                    {% ifchanged data.theatre_id %} 
+                    <td><span class="btn btn-dark">{{data.theatre.theatre_name}}&nbsp{{data.theatre.theatre_place}}</span></td>
+                    {% endifchanged %} 
+                    <td>     
+                        <a class="btn btn-primary" onclick="book({{data.showid}})">                     
+                            <label for="html" style="color: white;">{{data.date}}-{{data.showtime}}</label>
+                        </a> 
+                    </td> 
+                {% endif %}               
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    
+    
+    </table>
+    
+    </div>
+    <!-- {% for datat in datat %}    
+    {% for data in data %}                                    
+        {% if datat.theatreid == data.theatre_id%}               
+            {% if forloop.counter == 1 %}
+            <span class="btn btn-dark text-light">{{data.theatre.theatre_name}}&nbsp{{data.theatre.theatre_place}}</span>
+            {% endif %}          
+                <a class="btn btn-primary text-white" onclick="book({{data.showid}})">                     
+                    <label for="html">{{data.date}}-{{data.showtime}}</label>
+                </a> 
+        {% endif %}               
+    {% endfor %}
+{% endfor %} -->
+{% endif %}
+</div>

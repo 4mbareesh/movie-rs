@@ -1,0 +1,71 @@
+{% extends "theatrehead.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+
+<div class="row">
+    
+    <div class="col-md-12 bg-info">
+        
+     <h3 class="text-primary col-md-12" style="text-align: center;">Booking History</h3>
+    
+       <div class="col-md-12 ">
+        <hr/>
+        <table id="table table-responsive table-striped " width="100%" style="margin-bottom:10px;">
+            <thead class="bg-primary text-dark"> <tr>
+                <th >Sl. No.</th>
+                <th >Show Time</th>
+                <th >Movie Name</th>
+                <th >Rate</th>
+                <th >Date</th>
+                <th >Seats</th>
+                
+                <th >Status</th>
+                
+                <th >Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for datas in data %}        
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td><b>{{datas.showtime}}</b></td>
+            <td>{{datas.movie.movie_name}}</td>
+            <td>{{datas.rate}}</td>
+            <td>{{datas.date}}</td>
+            <td>{{datas.seats}}</td>
+            <td>{{datas.status}}</td>            
+            <td>
+                <a class="btn-danger btn" href="{% url 'delete_show' %}?id={{datas.showid}}">Remove</a>
+                {% comment %} <a class="btn-success btn" href="{% url 'post_details' %}?id={{datas.staffid}}">Manage</a> {% endcomment %}
+            
+            
+            </td>
+            </tr>
+           
+    
+            {% endfor %}
+    </tbody>
+    
+        </table>
+    
+    
+    
+    </div>
+    </div>
+    </div>
+    <style>
+      table th, table td {
+      padding: 9px 7px;
+      text-align: left;
+      }
+      </style>
+
+
+{% endblock %}

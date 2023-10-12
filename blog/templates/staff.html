@@ -1,0 +1,75 @@
+{% extends "theatrehead.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!--grid-->
+<div class="row">
+    
+<div class="col-md-12 bg-info">
+    
+ <h3 class="text-primary col-md-12" style="text-align: center;">Add new Staff</h3>
+ <div class="col-md-1"></div>
+   <div class="col-md-10 ">
+    <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{% url 'addstaff' %}">
+        {% csrf_token %}
+        <div class="tab-pane active" id="horizontal-form" style="margin-bottom: 5px;">
+                   
+        <table class="table table-responsive">
+            <tr><td colspan='8'>
+            {{msg}}</td></tr>
+                <tr>
+                    <td colspan="4">Name</td>
+                    </tr><tr>
+                    <td colspan="4"><input class="form-control" type="text" name="t1" required placeholder="Full name"/></td>
+                </tr>
+           
+                <tr>
+                    <td colspan="4">Image</td>
+                </tr><tr>
+                    <td colspan="4"><input type="file" class="form-control"  name="t2" required ></td>
+                </tr>
+
+                <tr>
+                    <td colspan="4">Phone</td>
+                    </tr><tr>
+                    <td colspan="4"><input class="form-control" type="number" name="t3" required placeholder="Phone"/></td>
+                </tr>
+
+                <tr>
+                    <td colspan="4">Email</td>
+                    </tr><tr>
+                    <td colspan="4"><input class="form-control" type="text" name="t5" required placeholder="Email"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">Password</td>
+                    </tr><tr>
+                    <td colspan="4"><input class="form-control" type="Password" name="t6" required placeholder="password"/></td>
+                </tr>
+        </table>
+</div>
+        <div class="" style="margin-bottom: 10px;">
+            <div class="row">
+            
+            <div class="col-sm-8 col-sm-offset-2 " align="center">
+                <button class="btn-success btn" type="submit" name="submit">Add</button>
+                <input type="reset" value="Reset" class=" btn btn-warning"/>
+                
+            </div>
+            </div>
+            </div>
+  </form>
+  </div>
+  </div>
+  </div>
+  <style>
+    table th, table td {
+    padding: 9px 7px;
+    text-align: left;
+    }
+    </style>
+{% endblock %}

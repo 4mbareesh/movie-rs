@@ -1,0 +1,44 @@
+{% extends role %}
+{% load static %}
+{% block content %}
+<script> 
+    function chh(v)
+    {
+        if(v.p2.value!=v.p3.value)
+        {
+            alert("password missmatch ");
+            v.p2.value="";
+             v.p3.value="";
+              v.p2.focus();
+              return false;
+        }
+        return true;
+    }
+</script>
+
+
+
+<hr style="color:#13bef0"/>
+<form  method="post" action="{%url 'Privacy' %}" onsubmit="return chh(this); ">
+    {% csrf_token %}
+<table class="table table-responsive table-striped">
+<tr>
+    <td>Current Password</td>
+    <td><input type="password" class="form-control"  minlength="8" placeholder="Current Password"  name="t1" required="" /></td>
+</tr>
+<tr>
+    <td>New Password</td>
+    <td><input type="password" class="form-control" minlength="8" placeholder="New Password"  name="t2" required=""/></td>
+</tr>
+<tr>
+    <td>Re-Enter Password</td>
+    <td><input type="password" placeholder="Re-Enter Password" minlength="8"  class="form-control" name="t3" required=""/></td>
+</tr>
+<tr>
+  
+    <td colspan="2"><input type="submit" style="float:right;height: 50px; width: 100px;" class="btn  btn-success"  name="b" value="Change"/></td>
+</tr>
+</table>
+</form>
+
+{% endblock %}

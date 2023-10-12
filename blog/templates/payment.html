@@ -1,0 +1,43 @@
+{% extends "indexhead.html" %}
+{% load static %}
+
+{% block content%}
+<section class="w3l-mag-main blog-post-main">
+    <div class="container">
+        <div class="mag-content-inf py-5">
+            <div class="container">
+                    <div class="display-ad" style="margin: 8px auto; display: block; text-align:center;">
+        
+                            <!---728x90--->
+        
+                            
+                            </div>
+        
+<form action="{% url 'payment' %}" method="post">                                                                                                                                  
+        {% csrf_token %}
+        <div class="form-group">
+        <input class="form-control"  type="hidden" name="t1" value="{{showid}}" >
+        </div>
+        <div class="form-group">
+            <input class="form-control"  type="hidden" name="t2" value="{{seats}}"  >
+            </div>    
+        <div class="form-group">
+        <label for="rate">Card number</label>
+        <input class="form-control"  type="text" name="t3" id="card" required>
+        </div>
+        <div class="form-group">
+        <label for="seat">Amount</label>
+        <input class="form-control"  type="text" name="t4" id="amount_pay" value="{{amount}}" readonly required>
+        </div>
+        <div class="form-group">
+        
+            <input class="form-control"  type="submit" value="pay">
+        </div>
+        
+</form>
+</div></div>
+</div>
+
+</section>
+
+{%endblock%}

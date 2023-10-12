@@ -1,0 +1,76 @@
+{% extends "adminhead.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+
+<div class="row">
+    
+    <div class="col-md-12 bg-info">
+        
+     <h3 class="text-primary col-md-12" style="text-align: center;">Release New Movie</h3>
+    
+       <div class="col-md-12 ">
+        <hr/>
+        <table id="table table-responsive table-striped " width="100%" style="margin-bottom:10px;">
+            <thead class="bg-primary text-white"> <tr>
+                <th style="  color:white;">Sl. No.</th>
+                <th style="  color:white;">Name</th>
+                <th style="  color:white;">Address</th>
+                <th style="  color:white;" class="col-md-3">Registration</th>
+               <th style="  color:white;">Place</th>
+                
+                 {% comment %} <th style="  color:white;">category</th>
+                <th style="  color:white;">production</th>
+                <th style="  color:white;">Release date</th>
+                <th style="  color:white;">Movie Status</th> {% endcomment %}
+                <th style="  color:white;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for datas in data %}        
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            {% comment %} <td><img src="media/{{datas.poster}}" width="100px" height="100px" /></td> {% endcomment %}
+            <td><b>{{datas.theatre_name}}</b></td>
+            <td>{{datas.address}}</td>
+            <td>{{datas.reg_num}}</td>
+            {% comment %} <td>
+                {% for v in datas.getmoviecat %}
+                {{v.category.category_name}} ,
+                {% endfor %}
+            
+            </td> {% endcomment %}
+            <td>{{datas.theatre_place}}</td>
+            {% comment %} <td>{{datas.release_date}}</td>
+            <td>{{datas.status}}</td> {% endcomment %}
+            <td>
+                <a class="btn-danger btn" href="{% url 'delete_theatre' %}?id={{datas.theatreid}}">Remove</a>
+                {% comment %} <a class="btn-success btn" href="{% url 'post_details' %}?id={{datas.movie_id}}">Manage</a> {% endcomment %}
+            
+            
+            </td>
+            </tr>
+           
+    
+            {% endfor %}
+    </tbody>
+    
+        </table>
+    
+    
+    
+    </div>
+    </div>
+    </div>
+    <style>
+      table th, table td {
+      padding: 9px 7px;
+      text-align: left;
+      }
+      </style>
+    {% endblock %}

@@ -1,0 +1,193 @@
+{% extends "indexhead.html" %}
+{% load static %}
+
+{% block content%}
+
+
+
+
+<!-- //w3l-banner-slider-main -->
+<section class="w3l-mag-main">
+	<!--/mag-content-->
+	<div class="mag-content-inf py-5">
+		<div class="container">
+			<div class="banner-bottom-sechny py-md-4">
+				<h3 class="hny-title text-center">New <span>Movies</span></h3>
+				<div class="ban-content-inf row py-lg-3">
+					
+					<div class="maghny-gd-1 col-lg-12">
+						<div class="row">
+							{% for datas in data %}
+							<div class="maghny-gd-1 col-md-3 mt-3">
+								<div class="maghny-grid">
+									<figure class="effect-lily">
+										 
+										<img 
+										
+										
+										style="width:270px;height:369px;"
+										class="img-fluid" src="media/{{datas.poster}}">
+										<figcaption>
+											<div>
+												<h4><span>{{datas.movie_name}}</span></h4>
+												<p>Movie Release {{datas.release_date}} </p>
+											</div>
+
+										</figcaption>
+									</figure>
+								</div>
+								<h5 class="top-title"><a href="#">{{datas.movie_name}}</a></h5>
+
+								<div class="mag-post-meta mt-3"><span
+										class="meta-author text-uppercase"><span>By&nbsp;</span><a href="#"
+											class="author-name"> {{datas.production.banner_name}}</a> </span>
+									<span class="author-date"></span>
+								</div>
+								<a href="{% url 'movie_details' %}?id={{datas.movie_id}}" class="read-more btn mt-3">Read More</a>
+							</div>
+						{% endfor %}
+                           
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+		</div>
+	</div>
+	<!--//mag-content-->
+	<!-- /slider -->
+	<script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+	<script src="{% static 'assets/js/grids.owl.carousel.js' %}"></script>
+	<script>
+		$(document).ready(function () {
+			$('.owl-carousel').owlCarousel({
+				loop: true,
+				margin: 0,
+				responsiveClass: true,
+				autoplay: true,
+				autoplayTimeout: 2000,
+				autoplaySpeed: 1000,
+				autoplayHoverPause: true,
+				responsive: {
+					0: {
+						items: 1,
+						nav: false
+					},
+					480: {
+						items: 2,
+						nav: true,
+						margin: 20
+					},
+					667: {
+						items: 3,
+						nav: true,
+						margin: 20
+					},
+					1000: {
+						items: 5,
+						nav: true,
+						margin: 20
+					}
+				}
+			})
+		})
+	</script>
+	<!-- /slider -->
+</section>
+
+<!-- //w3l-banner-slider-main -->
+<section class="w3l-mag-main">
+	<!--/mag-content-->
+	<div class="mag-content-inf py-5">
+		<div class="container">
+			<div class="banner-bottom-sechny py-md-4">
+				<h3 class="hny-title text-center">Recommented <span>For </span> You</h3>
+				<div class="ban-content-inf row py-lg-3">
+					
+					<div class="maghny-gd-1 col-lg-12">
+						<div class="row">
+							{% for datas in datan %}
+							<div class="maghny-gd-1 col-md-3 mt-3">
+								<div class="maghny-grid">
+									<figure class="effect-lily">
+										 
+										<img 
+										
+										
+										style="width:270px;height:369px;"
+										class="img-fluid" src="media/{{datas.poster}}">
+										<figcaption>
+											<div>
+												<h4><span>{{datas.movie_name}}</span></h4>
+												<p>Movie Release {{datas.release_date}} </p>
+											</div>
+
+										</figcaption>
+									</figure>
+								</div>
+								<h5 class="top-title"><a href="{% url 'movie_details' %}?id={{datas.movie_id}}">{{datas.movie_name}}</a></h5>
+
+								<div class="mag-post-meta mt-3"><span
+										class="meta-author text-uppercase"><span>By&nbsp;</span><a href="#"
+											class="author-name"> {{datas.production.banner_name}}</a> </span>
+									<span class="author-date"></span>
+								</div>
+								<a href="{% url 'movie_details' %}?id={{datas.movie_id}}" class="read-more btn mt-3">Read More</a>
+							</div>
+						{% endfor %}
+                           
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+		</div>
+	</div>
+	<!--//mag-content-->
+	<!-- /slider -->
+	<script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+	<script src="{% static 'assets/js/grids.owl.carousel.js' %}"></script>
+	<script>
+		$(document).ready(function () {
+			$('.owl-carousel').owlCarousel({
+				loop: true,
+				margin: 0,
+				responsiveClass: true,
+				autoplay: true,
+				autoplayTimeout: 2000,
+				autoplaySpeed: 1000,
+				autoplayHoverPause: true,
+				responsive: {
+					0: {
+						items: 1,
+						nav: false
+					},
+					480: {
+						items: 2,
+						nav: true,
+						margin: 20
+					},
+					667: {
+						items: 3,
+						nav: true,
+						margin: 20
+					},
+					1000: {
+						items: 5,
+						nav: true,
+						margin: 20
+					}
+				}
+			})
+		})
+	</script>
+	<!-- /slider -->
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "theatrehead.html" %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!--grid-->
+<div class="row">
+    
+<div class="col-md-12 bg-info">
+    
+ <h3 class="text-primary col-md-12" style="text-align: center;">Add Show</h3>
+ <div class="col-md-1"></div>
+   <div class="col-md-10 ">
+    <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{% url 'addshow' %}">
+        {% csrf_token %}
+        <div class="tab-pane active" id="horizontal-form" style="margin-bottom: 5px;">
+                   
+        <table class="table table-responsive">
+            <tr><td colspan='8'>
+            {{msg}}</td></tr>
+                <tr>
+                    <td colspan="4">Movie</td>
+                    </tr><tr>
+                    <td colspan="4">
+                        <select class="form-control" name="t1" required>
+                            <option value="" disabled selected>Select movie</option>
+                            {% for data in movie %}                               
+                            <option value="{{data.movie_id}}">{{data.movie_name|title}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+           
+                <tr>
+                    <td colspan="4">Show Time</td>
+                </tr><tr>
+                    <td colspan="4"><input type="time" class="form-control"  name="t2" required ></td>
+                </tr>
+
+                <tr>
+                    <td colspan="4">Rate</td>
+                    </tr><tr>
+                    <td colspan="4"><input class="form-control" type="number" name="t3" required placeholder="Rate of ticket"/></td>
+                </tr>
+
+                <tr>
+                    <td colspan="4">Date</td>
+                    </tr><tr>
+                    <td colspan="4"><input class="form-control" type="date" name="t4" required placeholder="Start DAte"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">Seats</td>
+                    </tr><tr>
+                    <td colspan="4"><input class="form-control" type="number" name="t6" required placeholder="Availble Seats"/></td>
+                </tr>
+
+        </table>
+</div>
+        <div class="" style="margin-bottom: 10px;">
+            <div class="row">
+            
+            <div class="col-sm-8 col-sm-offset-2 " align="center">
+                <button class="btn-success btn" type="submit" name="submit">Add</button>
+                <input type="reset" value="Reset" class=" btn btn-warning"/>
+                
+            </div>
+            </div>
+            </div>
+  </form>
+  </div>
+  </div>
+  </div>
+  <style>
+    table th, table td {
+    padding: 9px 7px;
+    text-align: left;
+    }
+    </style>
+
+
+
+
+
+{% endblock %}
